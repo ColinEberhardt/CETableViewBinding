@@ -21,7 +21,7 @@
 		72C53DD7190E30E800122BA2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C53DB9190E30E800122BA2 /* UIKit.framework */; };
 		72C53DDF190E30E800122BA2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 72C53DDD190E30E800122BA2 /* InfoPlist.strings */; };
 		72C53DE1190E30E800122BA2 /* CETableViewBindingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 72C53DE0190E30E800122BA2 /* CETableViewBindingTests.m */; };
-		72C53DEE190E31D100122BA2 /* CEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72C53DED190E31D100122BA2 /* CEViewController.m */; };
+		72C53DEE190E31D100122BA2 /* CETwitterSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72C53DED190E31D100122BA2 /* CETwitterSearchViewController.m */; };
 		72C53DF3190E31DB00122BA2 /* CETableViewBindingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 72C53DF2190E31DB00122BA2 /* CETableViewBindingHelper.m */; };
 		72C53DF7190E32A500122BA2 /* CETwitterSearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 72C53DF6190E32A500122BA2 /* CETwitterSearchViewModel.m */; };
 		72C53DF9190E330300122BA2 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C53DF8190E330300122BA2 /* Social.framework */; };
@@ -60,8 +60,8 @@
 		72C53DDC190E30E800122BA2 /* CETableViewBindingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CETableViewBindingTests-Info.plist"; sourceTree = "<group>"; };
 		72C53DDE190E30E800122BA2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		72C53DE0190E30E800122BA2 /* CETableViewBindingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CETableViewBindingTests.m; sourceTree = "<group>"; };
-		72C53DEC190E31D100122BA2 /* CEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CEViewController.h; path = View/CEViewController.h; sourceTree = "<group>"; };
-		72C53DED190E31D100122BA2 /* CEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CEViewController.m; path = View/CEViewController.m; sourceTree = "<group>"; };
+		72C53DEC190E31D100122BA2 /* CETwitterSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CETwitterSearchViewController.h; path = View/CETwitterSearchViewController.h; sourceTree = "<group>"; };
+		72C53DED190E31D100122BA2 /* CETwitterSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CETwitterSearchViewController.m; path = View/CETwitterSearchViewController.m; sourceTree = "<group>"; };
 		72C53DF1190E31DB00122BA2 /* CETableViewBindingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CETableViewBindingHelper.h; sourceTree = "<group>"; };
 		72C53DF2190E31DB00122BA2 /* CETableViewBindingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CETableViewBindingHelper.m; sourceTree = "<group>"; };
 		72C53DF4190E321E00122BA2 /* CEReactiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEReactiveView.h; sourceTree = "<group>"; };
@@ -196,8 +196,8 @@
 		72C53DEB190E318E00122BA2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				72C53DEC190E31D100122BA2 /* CEViewController.h */,
-				72C53DED190E31D100122BA2 /* CEViewController.m */,
+				72C53DEC190E31D100122BA2 /* CETwitterSearchViewController.h */,
+				72C53DED190E31D100122BA2 /* CETwitterSearchViewController.m */,
 				72C53DFF190EBEB700122BA2 /* CETweetTableViewCell.xib */,
 				72C53E01190EBEF100122BA2 /* CETweetTableViewCell.h */,
 				72C53E02190EBEF100122BA2 /* CETweetTableViewCell.m */,
@@ -355,7 +355,7 @@
 				72C53DC6190E30E800122BA2 /* CEAppDelegate.m in Sources */,
 				72C53DC2190E30E800122BA2 /* main.m in Sources */,
 				72C53DFE190EBB0D00122BA2 /* CETweetViewModel.m in Sources */,
-				72C53DEE190E31D100122BA2 /* CEViewController.m in Sources */,
+				72C53DEE190E31D100122BA2 /* CETwitterSearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

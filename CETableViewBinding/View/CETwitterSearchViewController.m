@@ -6,12 +6,12 @@
 //  Copyright (c) 2014 Colin Eberhardt. All rights reserved.
 //
 
-#import "CEViewController.h"
+#import "CETwitterSearchViewController.h"
 #import "CETwitterSearchViewModel.h"
 #import "CETableViewBindingHelper.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-@interface CEViewController ()
+@interface CETwitterSearchViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *searchTextField;
 @property (weak, nonatomic) IBOutlet UITableView *searchResultsTable;
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation CEViewController
+@implementation CETwitterSearchViewController
 
 - (void)viewDidLoad
 {
@@ -29,15 +29,20 @@
 	
   self.viewModel = [CETwitterSearchViewModel new];
   
+  // bind the UITextField text updates to the view model
   RAC(self.viewModel, searchText) = self.searchTextField.rac_textSignal;
   
+  // bind a button to the search command
   self.searchButton.rac_command = self.viewModel.searchCommand;
   
+  // when the search executes hide the keyboard
   [self.viewModel.searchCommand.executing subscribeNext:^(id x) {
     [self.searchTextField resignFirstResponder];
   }];
   
-  RAC([UIApplication sharedApplication], networkActivityIndicatorVisible) = self.viewModel.searchCommand.executing;
+  // show a network activity indicator when the search is being executed
+  RAC([UIApplication sharedApplication], networkActivityIndicatorVisible) =
+    self.viewModel.searchCommand.executing;
   
   
   UINib *nib = [UINib nibWithNibName:@"CETweetTableViewCell" bundle:nil];

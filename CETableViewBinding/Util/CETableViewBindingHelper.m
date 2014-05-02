@@ -11,10 +11,10 @@
 
 @interface CETableViewBindingHelper () <UITableViewDataSource, UITableViewDelegate>
 
-@property UITableView *tableView;
-@property NSArray *data;
-@property UITableViewCell *templateCell;
-@property RACCommand *selection;
+@property (weak, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) NSArray *data;
+@property (strong, nonatomic) UITableViewCell *templateCell;
+@property (strong, nonatomic) RACCommand *selection;
 
 @end
 

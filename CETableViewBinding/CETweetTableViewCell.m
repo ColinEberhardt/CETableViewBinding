@@ -23,17 +23,10 @@
 @implementation CETweetTableViewCell
 
 - (void)bindViewModel:(id)viewModel {
+  
   CETweetViewModel *tweet = (CETweetViewModel *)viewModel;
   
-  self.titleTextField.frame = CGRectInset(self.titleBackgroundView.frame, 5.0f, 5.0f) ;
-  self.titleTextField.text = tweet.status;
-  [self.titleTextField sizeToFit];
-  
-  self.usernameTextField.text = tweet.username;
-  
-  self.ghostImageView.image = nil;
-  self.profileImage.image = nil;
-  
+  // some general styling
   self.ghostImageView.contentMode = UIViewContentModeScaleToFill;
   self.ghostImageView.alpha = 0.5;
   
@@ -43,17 +36,31 @@
   
   self.titleBackgroundView.layer.cornerRadius = 5.0f;
   
+  // set the tweet 'status' label, sizing it to fit the text
+  self.titleTextField.frame = CGRectInset(self.titleBackgroundView.frame, 5.0f, 5.0f) ;
+  self.titleTextField.text = tweet.status;
+  [self.titleTextField sizeToFit];
+  
+  // set the username
+  self.usernameTextField.text = tweet.username;
+  
+  // use signals to fetch the images for each image view
+  self.profileImage.image = nil;
   [[self signalForImage:[NSURL URLWithString:tweet.profileBannerUrl]]
     subscribeNext:^(id x) {
       self.ghostImageView.image = x;
     }];
   
+  self.ghostImageView.image = nil;
   [[self signalForImage:[NSURL URLWithString:tweet.profileImageUrl]]
     subscribeNext:^(id x) {
       self.profileImage.image = x;
     }];
 }
 
+// creates a signal that fetches an image in the background, delivering
+// it on the UI thread. This signal 'cancels' itself if the cell is re-used before the
+// image is downloaded.
 -(RACSignal *)signalForImage:(NSURL *)imageUrl {
   
   RACScheduler *scheduler = [RACScheduler schedulerWithPriority:RACSchedulerPriorityBackground];

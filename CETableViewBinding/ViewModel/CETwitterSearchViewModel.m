@@ -41,18 +41,22 @@ static NSString * const RWTwitterInstantDomain = @"TwitterInstant";
 
 - (void) initialize {
   
+  // set up access to twitter
   self.accountStore = [[ACAccountStore alloc] init];
   self.twitterAccountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
 
   [[self requestAccessToTwitterSignal]
        subscribeNext:^(id x) {
-         NSLog(x);
+         NSLog(@"Access accepted");
        }];
   
+  // create the search command, using a signal that searches twitter
   self.searchCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-    return [self signalForSearchWithText:self.searchText];
-                                               }];
+                            return [self signalForSearchWithText:self.searchText];
+                           }];
   
+  // create a signal which converts the results of a twitter search
+  // into an array of CETweetViewModel instances
   RACSignal *searchResultsSignal =
     [[[self.searchCommand.executionSignals
       flattenMap:^RACStream *(id value) {

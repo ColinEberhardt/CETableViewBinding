@@ -18,8 +18,6 @@
   tweet.profileImageUrl = user[@"profile_image_url"];
   tweet.username = user[@"screen_name"];
   tweet.profileBannerUrl = user[@"profile_banner_url"];
-  NSLog(  tweet.status);
-  NSLog(  tweet.profileBannerUrl);
   return tweet;
 }
 

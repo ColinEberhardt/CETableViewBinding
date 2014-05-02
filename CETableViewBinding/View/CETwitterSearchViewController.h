@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CEViewController : UIViewController
+@interface CETwitterSearchViewController : UIViewController
 
 @end

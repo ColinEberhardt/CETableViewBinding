@@ -13,11 +13,12 @@
 @interface CETwitterSearchViewModel : NSObject
 
 /// The current search text
-@property NSString *searchText;
+@property (nonatomic, strong) NSString *searchText;
 
 /// An array of CETweetViewModel instances which indicate the current search results
-@property NSArray *searchResults;
+@property (nonatomic, strong) NSArray *searchResults;
 
-@property RACCommand *searchCommand;
+/// A command which when executed searches twitter using the current searchText
+@property (nonatomic, strong) RACCommand *searchCommand;
 
 @end
