@@ -70,6 +70,12 @@ static NSString * const RWTwitterInstantDomain = @"TwitterInstant";
       }];
   
   RAC(self, searchResults) = searchResultsSignal;
+  
+  // create the tweet selected command, that simply logs
+  self.tweetSelectedCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(CETweetViewModel *selectedViewModel) {
+    NSLog(selectedViewModel.status);
+    return [RACSignal empty];
+  }];
 }
 
 - (RACSignal *)requestAccessToTwitterSignal {

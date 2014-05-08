@@ -21,4 +21,7 @@
 /// A command which when executed searches twitter using the current searchText
 @property (nonatomic, strong) RACCommand *searchCommand;
 
+/// A command which when executed when a tweet is selected
+@property (nonatomic, strong) RACCommand *tweetSelectedCommand;
+
 @end

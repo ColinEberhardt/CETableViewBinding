@@ -46,7 +46,10 @@
   
   
   UINib *nib = [UINib nibWithNibName:@"CETweetTableViewCell" bundle:nil];
-  [CETableViewBindingHelper bindingHelperForTableView:self.searchResultsTable sourceSignal:RACObserve(self.viewModel, searchResults) selectionCommand:Nil templateCell:nib];
+  [CETableViewBindingHelper bindingHelperForTableView:self.searchResultsTable
+                                         sourceSignal:RACObserve(self.viewModel, searchResults)
+                                     selectionCommand:self.viewModel.tweetSelectedCommand
+                                         templateCell:nib];
 }
 
 @end
