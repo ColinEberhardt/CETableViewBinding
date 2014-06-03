@@ -8,6 +8,7 @@
 
 #import "CETableViewBindingHelper.h"
 #import "CEReactiveView.h"
+#import <ReactiveCocoa/RACEXTScope.h>
 
 @interface CETableViewBindingHelper () <UITableViewDataSource, UITableViewDelegate>
 
@@ -19,6 +20,8 @@
   UITableViewCell *_templateCell;
   RACCommand *_selection;
 }
+
+#pragma  mark - initialization
 
 - (instancetype)initWithTableView:(UITableView *)tableView
                      sourceSignal:(RACSignal *)source
@@ -33,8 +36,8 @@
     // each time the view model updates the array property, store the latest
     // value and reload the table view
     [source subscribeNext:^(id x) {
-      _data = x;
-      [_tableView reloadData];
+      self->_data = x;
+      [self->_tableView reloadData];
     }];
     
     // create an instance of the template cell and register with the table view
@@ -76,7 +79,36 @@
 #pragma mark = UITableViewDelegate methods
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  
+  // execute the command
   [_selection execute:_data[indexPath.row]];
+  
+  // forward the delegate method
+  if ([self.delegate respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]) {
+    [self.delegate tableView:tableView didSelectRowAtIndexPath:indexPath];
+  }
+}
+
+#pragma mark = UITableViewDelegate forwarding
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+  if ([self.delegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
+    [self.delegate scrollViewDidScroll:scrollView];
+  }
+}
+
+- (BOOL)respondsToSelector:(SEL)aSelector {
+  if ([self.delegate respondsToSelector:aSelector]) {
+    return YES;
+  }
+  return [super respondsToSelector:aSelector];
+}
+
+- (id)forwardingTargetForSelector:(SEL)aSelector {
+  if ([self.delegate respondsToSelector:aSelector]) {
+    return self.delegate;
+  }
+  return [super forwardingTargetForSelector:aSelector];
 }
 
 @end
