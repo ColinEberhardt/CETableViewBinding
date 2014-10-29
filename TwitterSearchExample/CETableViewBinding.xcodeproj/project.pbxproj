@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		03E7495390A14F16AAD5F87E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 159194CDA84D4A8384C079A8 /* libPods.a */; };
+		3CCB78101A01619D00BEACF7 /* CEObservableMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCB780B1A01619D00BEACF7 /* CEObservableMutableArray.m */; };
+		3CCB78111A01619D00BEACF7 /* CETableViewBindingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCB780F1A01619D00BEACF7 /* CETableViewBindingHelper.m */; };
 		72C53DB6190E30E800122BA2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C53DB5190E30E800122BA2 /* Foundation.framework */; };
 		72C53DB8190E30E800122BA2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C53DB7190E30E800122BA2 /* CoreGraphics.framework */; };
 		72C53DBA190E30E800122BA2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C53DB9190E30E800122BA2 /* UIKit.framework */; };
@@ -22,7 +24,6 @@
 		72C53DDF190E30E800122BA2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 72C53DDD190E30E800122BA2 /* InfoPlist.strings */; };
 		72C53DE1190E30E800122BA2 /* CETableViewBindingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 72C53DE0190E30E800122BA2 /* CETableViewBindingTests.m */; };
 		72C53DEE190E31D100122BA2 /* CETwitterSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72C53DED190E31D100122BA2 /* CETwitterSearchViewController.m */; };
-		72C53DF3190E31DB00122BA2 /* CETableViewBindingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 72C53DF2190E31DB00122BA2 /* CETableViewBindingHelper.m */; };
 		72C53DF7190E32A500122BA2 /* CETwitterSearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 72C53DF6190E32A500122BA2 /* CETwitterSearchViewModel.m */; };
 		72C53DF9190E330300122BA2 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C53DF8190E330300122BA2 /* Social.framework */; };
 		72C53DFB190E330900122BA2 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C53DFA190E330800122BA2 /* Accounts.framework */; };
@@ -43,6 +44,11 @@
 
 /* Begin PBXFileReference section */
 		159194CDA84D4A8384C079A8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CCB780B1A01619D00BEACF7 /* CEObservableMutableArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CEObservableMutableArray.m; path = ../../../CEObservableMutableArray.m; sourceTree = "<group>"; };
+		3CCB780C1A01619D00BEACF7 /* CEObservableMutableArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CEObservableMutableArray.h; path = ../../../CEObservableMutableArray.h; sourceTree = "<group>"; };
+		3CCB780D1A01619D00BEACF7 /* CEReactiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CEReactiveView.h; path = ../../../CEReactiveView.h; sourceTree = "<group>"; };
+		3CCB780E1A01619D00BEACF7 /* CETableViewBindingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CETableViewBindingHelper.h; path = ../../../CETableViewBindingHelper.h; sourceTree = "<group>"; };
+		3CCB780F1A01619D00BEACF7 /* CETableViewBindingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CETableViewBindingHelper.m; path = ../../../CETableViewBindingHelper.m; sourceTree = "<group>"; };
 		72C53DB2190E30E800122BA2 /* CETableViewBinding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CETableViewBinding.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72C53DB5190E30E800122BA2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		72C53DB7190E30E800122BA2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -62,9 +68,6 @@
 		72C53DE0190E30E800122BA2 /* CETableViewBindingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CETableViewBindingTests.m; sourceTree = "<group>"; };
 		72C53DEC190E31D100122BA2 /* CETwitterSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CETwitterSearchViewController.h; path = View/CETwitterSearchViewController.h; sourceTree = "<group>"; };
 		72C53DED190E31D100122BA2 /* CETwitterSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CETwitterSearchViewController.m; path = View/CETwitterSearchViewController.m; sourceTree = "<group>"; };
-		72C53DF1190E31DB00122BA2 /* CETableViewBindingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CETableViewBindingHelper.h; sourceTree = "<group>"; };
-		72C53DF2190E31DB00122BA2 /* CETableViewBindingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CETableViewBindingHelper.m; sourceTree = "<group>"; };
-		72C53DF4190E321E00122BA2 /* CEReactiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEReactiveView.h; sourceTree = "<group>"; };
 		72C53DF5190E32A500122BA2 /* CETwitterSearchViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CETwitterSearchViewModel.h; path = ViewModel/CETwitterSearchViewModel.h; sourceTree = "<group>"; };
 		72C53DF6190E32A500122BA2 /* CETwitterSearchViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CETwitterSearchViewModel.m; path = ViewModel/CETwitterSearchViewModel.m; sourceTree = "<group>"; };
 		72C53DF8190E330300122BA2 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -208,9 +211,11 @@
 		72C53DEF190E31DB00122BA2 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				72C53DF4190E321E00122BA2 /* CEReactiveView.h */,
-				72C53DF1190E31DB00122BA2 /* CETableViewBindingHelper.h */,
-				72C53DF2190E31DB00122BA2 /* CETableViewBindingHelper.m */,
+				3CCB780B1A01619D00BEACF7 /* CEObservableMutableArray.m */,
+				3CCB780C1A01619D00BEACF7 /* CEObservableMutableArray.h */,
+				3CCB780D1A01619D00BEACF7 /* CEReactiveView.h */,
+				3CCB780E1A01619D00BEACF7 /* CETableViewBindingHelper.h */,
+				3CCB780F1A01619D00BEACF7 /* CETableViewBindingHelper.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -350,11 +355,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				72C53E03190EBEF100122BA2 /* CETweetTableViewCell.m in Sources */,
-				72C53DF3190E31DB00122BA2 /* CETableViewBindingHelper.m in Sources */,
 				72C53DF7190E32A500122BA2 /* CETwitterSearchViewModel.m in Sources */,
 				72C53DC6190E30E800122BA2 /* CEAppDelegate.m in Sources */,
+				3CCB78111A01619D00BEACF7 /* CETableViewBindingHelper.m in Sources */,
 				72C53DC2190E30E800122BA2 /* main.m in Sources */,
 				72C53DFE190EBB0D00122BA2 /* CETweetViewModel.m in Sources */,
+				3CCB78101A01619D00BEACF7 /* CEObservableMutableArray.m in Sources */,
 				72C53DEE190E31D100122BA2 /* CETwitterSearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
