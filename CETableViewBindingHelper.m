@@ -72,7 +72,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   id<CEReactiveView> cell = [tableView dequeueReusableCellWithIdentifier:_templateCell.reuseIdentifier];
-  [cell bindViewModel:_data[indexPath.row]];
+  if ([cell respondsToSelector:@selector(bindViewModel:)]) {
+    [cell bindViewModel:_data[indexPath.row]];
+  } else {
+    NSLog(@"The cells supplied to the CETableViewBindingHelper must implement the CEReactiveView protocol");
+  }
   return (UITableViewCell *)cell;
 }
 
