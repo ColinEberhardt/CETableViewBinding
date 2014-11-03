@@ -15,18 +15,29 @@
   if (self = [super init]) {
    
     self.quotes = [[CEObservableMutableArray alloc] init];
+    self.paused = NO;
     
-    for (NSUInteger i=0; i<10; i++) {
+    for (NSUInteger i=0; i<30; i++) {
       [self.quotes addObject:[self newQuote]];
     }
     
     [self performSelector:@selector(updatePrices) withObject:self afterDelay:1.0f];
+    
+    self.toggleStreamingCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+      self.paused = !self.paused;
+      return [RACSignal empty];
+    }];
   }
   return self;
 }
 
 - (void)updatePrices {
+
   [self performSelector:@selector(updatePrices) withObject:self afterDelay:1.0f];
+  
+  if (self.paused) {
+    return;
+  }
   
   // remove the highlight
   for (QuoteViewModel *quote in self.quotes) {
@@ -37,7 +48,7 @@
   
   // randomly update some prices
   for (QuoteViewModel *quote in self.quotes) {
-    if (RANDOM_DOUBLE > 0.7) {
+    if (RANDOM_DOUBLE > 0.9) {
       quote.price = @(quote.price.doubleValue + (RANDOM_DOUBLE * 10.0) - 5.0);
       quote.highlight = YES;
     }

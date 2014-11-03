@@ -6,12 +6,14 @@
 //  Copyright (c) 2014 Colin Eberhardt. All rights reserved.
 //
 
+#import <ReactiveCocoa/ReactiveCocoa.h>
 #import "QuoteListViewController.h"
 #import "CETableViewBindingHelper.h"
 #import "QuoteListViewModel.h"
 
 @interface QuoteListViewController ()
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *pauseButton;
 @property (weak, nonatomic) IBOutlet UITableView *quotesTableView;
 
 @end
@@ -23,12 +25,21 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
   if (self = [super initWithCoder:aDecoder]) {
     _viewModel = [QuoteListViewModel new];
+    self.title = @"Stock Quotes";
   }
   return self;
 }
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  
+  self.pauseButton.rac_command = _viewModel.toggleStreamingCommand;
+  
+  RAC(self.pauseButton, title) =
+    [RACObserve(_viewModel, paused)
+      map:^id(NSNumber *x) {
+        return [x boolValue] ? @"Resume" : @"Pause";
+      }];
 
   UINib *nib = [UINib nibWithNibName:@"QuoteTableViewCell" bundle:nil];
   [CETableViewBindingHelper bindingHelperForTableView:self.quotesTableView
