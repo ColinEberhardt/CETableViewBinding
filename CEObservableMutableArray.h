@@ -8,8 +8,23 @@
 
 #import <Foundation/Foundation.h>
 
+@class CEObservableMutableArray;
+
+@protocol CEObservableMutableArrayDelegate <NSObject>
+
+@optional
+
+- (void)array:(CEObservableMutableArray *)array didAddItemAtIndex:(NSUInteger) index;
+
+@end
+
+
 @interface CEObservableMutableArray : NSMutableArray
 
 - (instancetype) initWithArray:(NSArray *)array;
 
+@property (nonatomic, assign) id<CEObservableMutableArrayDelegate> delegate;
+
 @end
+
+

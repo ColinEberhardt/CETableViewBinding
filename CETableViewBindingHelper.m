@@ -9,8 +9,9 @@
 #import "CETableViewBindingHelper.h"
 #import "CEReactiveView.h"
 #import <ReactiveCocoa/RACEXTScope.h>
+#import "CEObservableMutableArray.h"
 
-@interface CETableViewBindingHelper () <UITableViewDataSource, UITableViewDelegate>
+@interface CETableViewBindingHelper () <UITableViewDataSource, UITableViewDelegate, CEObservableMutableArrayDelegate>
 
 @end
 
@@ -36,6 +37,12 @@
     // each time the view model updates the array property, store the latest
     // value and reload the table view
     [source subscribeNext:^(id x) {
+      if ([x isKindOfClass:[CEObservableMutableArray class]]) {
+        ((CEObservableMutableArray *)x).delegate = self;
+      }
+      if (self->_data != nil && [self->_data isKindOfClass:[CEObservableMutableArray class]]) {
+        ((CEObservableMutableArray *)self->_data).delegate = nil;
+      }
       self->_data = x;
       [self->_tableView reloadData];
     }];
@@ -113,6 +120,12 @@
     return self.delegate;
   }
   return [super forwardingTargetForSelector:aSelector];
+}
+
+#pragma mark = CEObservableMutableArrayDelegate methods
+
+- (void)array:(CEObservableMutableArray *)array didAddItemAtIndex:(NSUInteger)index {
+  [_tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 @end

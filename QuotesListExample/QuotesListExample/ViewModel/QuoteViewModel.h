@@ -17,6 +17,8 @@
 
 @property (strong, nonatomic) NSNumber *price;
 
+@property (nonatomic) BOOL highlight;
+
 - (instancetype) initWithSymbol: (NSString *)symbol;
 
 + (instancetype) quoteWithSymbol: (NSString *)symbol;

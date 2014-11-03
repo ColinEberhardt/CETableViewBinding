@@ -19,8 +19,7 @@
   return self;
 }
 
-- (id) init
-{
+- (id) init {
   if (self  = [super init]) {
     _backingStore = [NSMutableArray new];
   }
@@ -29,40 +28,37 @@
 
 #pragma mark NSArray
 
--(NSUInteger)count
-{
+-(NSUInteger)count {
   return [_backingStore count];
 }
 
--(id)objectAtIndex:(NSUInteger)index
-{
+-(id)objectAtIndex:(NSUInteger)index {
   return [_backingStore objectAtIndex:index];
 }
 
 #pragma mark NSMutableArray
 
--(void)insertObject:(id)anObject atIndex:(NSUInteger)index
-{
+-(void)insertObject:(id)anObject atIndex:(NSUInteger)index {
   [_backingStore insertObject:anObject atIndex:index];
+  
+  if ([self.delegate respondsToSelector:@selector(array:didAddItemAtIndex:)]) {
+    [self.delegate array:self didAddItemAtIndex:index];
+  }
 }
 
--(void)removeObjectAtIndex:(NSUInteger)index
-{
+-(void)removeObjectAtIndex:(NSUInteger)index {
   [_backingStore removeObjectAtIndex:index];
 }
 
--(void)addObject:(id)anObject
-{
+-(void)addObject:(id)anObject {
   [_backingStore addObject:anObject];
 }
 
--(void)removeLastObject
-{
+-(void)removeLastObject {
   [_backingStore removeLastObject];
 }
 
--(void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject
-{
+-(void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject {
   [_backingStore replaceObjectAtIndex:index withObject:anObject];
 }
 

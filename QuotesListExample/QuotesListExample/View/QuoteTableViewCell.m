@@ -31,9 +31,21 @@
   [formatter setRoundingMode: NSNumberFormatterRoundUp];
   
   // bind the price property, converting it from a number to a string
-  RAC(self.priceLabel, text) = [RACObserve(quoteViewModel, price) map:^id(NSNumber *x) {
-    return [formatter stringFromNumber:x];
-  }];
+  [RACObserve(quoteViewModel, price)
+    subscribeNext:^(NSNumber *x) {
+      self.priceLabel.text = [formatter stringFromNumber:x];
+    }];
+  
+  // bind the background color
+  [RACObserve(quoteViewModel, highlight)
+    subscribeNext:^(NSNumber *x) {
+      if ([x boolValue]) {
+        self.backgroundColor = [UIColor redColor];
+        [UIView animateWithDuration:0.3f animations:^{
+          self.backgroundColor = [UIColor whiteColor];
+        }];
+      }
+    }];
 }
 
 @end
