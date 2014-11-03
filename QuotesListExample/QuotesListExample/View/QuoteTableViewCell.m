@@ -40,7 +40,7 @@
   [RACObserve(quoteViewModel, highlight)
     subscribeNext:^(NSNumber *x) {
       if ([x boolValue]) {
-        self.backgroundColor = [UIColor redColor];
+        self.backgroundColor = [UIColor yellowColor];
         [UIView animateWithDuration:0.3f animations:^{
           self.backgroundColor = [UIColor whiteColor];
         }];

@@ -45,7 +45,14 @@
   
   // randomly add quotes
   if (RANDOM_DOUBLE > 0.8) {
-    [self.quotes insertObject:[self newQuote] atIndex:2];
+    NSUInteger randomIndex = (NSUInteger)(RANDOM_DOUBLE * (double)self.quotes.count);
+    [self.quotes insertObject:[self newQuote] atIndex:randomIndex];
+  }
+  
+  // randomly remove quotes
+  if (RANDOM_DOUBLE > 0.8) {
+    NSUInteger randomIndex = (NSUInteger)(RANDOM_DOUBLE * (double)self.quotes.count);
+    [self.quotes removeObjectAtIndex:randomIndex];
   }
 }
 

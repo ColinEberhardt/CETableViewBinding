@@ -16,6 +16,8 @@
 
 - (void)array:(CEObservableMutableArray *)array didAddItemAtIndex:(NSUInteger) index;
 
+- (void)array:(CEObservableMutableArray *)array didRemoveItemAtIndex:(NSUInteger) index;
+
 @end
 
 

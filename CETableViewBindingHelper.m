@@ -100,6 +100,16 @@
   }
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+  if (editingStyle == UITableViewCellEditingStyleDelete) {
+    if ([_data isKindOfClass:[CEObservableMutableArray class]]) {
+      [((CEObservableMutableArray *)_data) removeObjectAtIndex:indexPath.row];
+    } else {
+      NSLog(@"The array bound to the table view must be a CEObservableMutableArray");
+    }
+  }
+}
+
 #pragma mark = UITableViewDelegate forwarding
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -125,7 +135,11 @@
 #pragma mark = CEObservableMutableArrayDelegate methods
 
 - (void)array:(CEObservableMutableArray *)array didAddItemAtIndex:(NSUInteger)index {
-  [_tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+  [_tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationRight];
+}
+
+- (void)array:(CEObservableMutableArray *)array didRemoveItemAtIndex:(NSUInteger)index {
+  [_tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationLeft];
 }
 
 @end

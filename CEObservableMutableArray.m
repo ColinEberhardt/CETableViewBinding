@@ -48,14 +48,28 @@
 
 -(void)removeObjectAtIndex:(NSUInteger)index {
   [_backingStore removeObjectAtIndex:index];
+  
+  if ([self.delegate respondsToSelector:@selector(array:didRemoveItemAtIndex:)]) {
+    [self.delegate array:self didRemoveItemAtIndex:index];
+  }
 }
 
 -(void)addObject:(id)anObject {
   [_backingStore addObject:anObject];
+  
+  if ([self.delegate respondsToSelector:@selector(array:didAddItemAtIndex:)]) {
+    NSUInteger index = self.count - 1;
+    [self.delegate array:self didAddItemAtIndex:index];
+  }
 }
 
 -(void)removeLastObject {
   [_backingStore removeLastObject];
+  
+  if ([self.delegate respondsToSelector:@selector(array:didRemoveItemAtIndex:)]) {
+    NSUInteger index = self.count - 1;
+    [self.delegate array:self didRemoveItemAtIndex:index];
+  }
 }
 
 -(void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject {
