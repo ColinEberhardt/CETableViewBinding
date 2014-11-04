@@ -17,11 +17,19 @@
     self.quotes = [[CEObservableMutableArray alloc] init];
     self.paused = NO;
     
-    for (NSUInteger i=0; i<30; i++) {
+    // create a few quotes
+    for (NSUInteger i=0; i<10; i++) {
       [self.quotes addObject:[self newQuote]];
     }
     
-    [self performSelector:@selector(updatePrices) withObject:self afterDelay:1.0f];
+    // periodically update the prices
+    [[[RACSignal interval:1.0f onScheduler:[RACScheduler mainThreadScheduler]]
+      filter:^BOOL(id value) {
+        return !self.paused;
+      }]
+      subscribeNext:^(id x) {
+        [self updatePrices];
+      }];
     
     self.toggleStreamingCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
       self.paused = !self.paused;
@@ -31,13 +39,8 @@
   return self;
 }
 
+/// performs various random mutations on the array
 - (void)updatePrices {
-
-  [self performSelector:@selector(updatePrices) withObject:self afterDelay:1.0f];
-  
-  if (self.paused) {
-    return;
-  }
   
   // remove the highlight
   for (QuoteViewModel *quote in self.quotes) {
@@ -64,6 +67,13 @@
   if (RANDOM_DOUBLE > 0.8) {
     NSUInteger randomIndex = (NSUInteger)(RANDOM_DOUBLE * (double)self.quotes.count);
     [self.quotes removeObjectAtIndex:randomIndex];
+  }
+  
+  // randomly replace quotes
+  if (RANDOM_DOUBLE > 0.8) {
+    NSUInteger randomIndex = (NSUInteger)(RANDOM_DOUBLE * (double)self.quotes.count);
+    QuoteViewModel *quote = [self newQuote];
+    [self.quotes replaceObjectAtIndex:randomIndex withObject:quote];
   }
 }
 

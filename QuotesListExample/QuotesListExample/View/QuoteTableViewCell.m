@@ -24,17 +24,34 @@
   
   self.symbolLabel.text = quoteViewModel.symbol;
   
-  NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-  [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-  [formatter setMaximumFractionDigits:2];
-  [formatter setMinimumFractionDigits:2];
-  [formatter setRoundingMode: NSNumberFormatterRoundUp];
+  static NSNumberFormatter *formatter = nil;
+  if (formatter == nil) {
+    formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    [formatter setMaximumFractionDigits:2];
+    [formatter setMinimumFractionDigits:2];
+    [formatter setRoundingMode: NSNumberFormatterRoundUp];
+  }
   
   // bind the price property, converting it from a number to a string
   [[RACObserve(quoteViewModel, price)
     takeUntil:self.rac_prepareForReuseSignal]
     subscribeNext:^(NSNumber *x) {
       self.priceLabel.text = [formatter stringFromNumber:x];
+    }];
+  
+  // bind the move direction
+  [[RACObserve(quoteViewModel, moveDirection)
+    takeUntil:self.rac_prepareForReuseSignal]
+    subscribeNext:^(NSNumber *x) {
+      UIColor *color = [UIColor blackColor];
+      if ([x intValue] == MoveDirectionUp) {
+        color = [UIColor greenColor];
+      }
+      if ([x intValue] == MoveDirectionDown) {
+        color = [UIColor redColor];
+      }
+      self.priceLabel.textColor = color;
     }];
   
   // bind the background color

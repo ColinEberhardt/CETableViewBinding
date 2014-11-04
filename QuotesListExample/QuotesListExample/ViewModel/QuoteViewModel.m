@@ -13,10 +13,22 @@
 - (instancetype)initWithSymbol:(NSString *)symbol {
   if (self = [super init]) {
     self.symbol = symbol;
-    
     self.price = @(RANDOM_DOUBLE * 50.0 + 80.0);
   }
   return self;
+}
+
+- (void)setPrice:(NSNumber *)price {
+  if (!_price) {
+    self.moveDirection = MoveDirectionNone;
+  } else if ([_price doubleValue] > [price doubleValue]) {
+    self.moveDirection = MoveDirectionDown;
+  } else if ([_price doubleValue] < [price doubleValue]) {
+    self.moveDirection = MoveDirectionUp;
+  } else {
+    self.moveDirection = MoveDirectionNone;
+  }
+  _price = price;
 }
 
 + (instancetype)quoteWithSymbol:(NSString *)symbol {

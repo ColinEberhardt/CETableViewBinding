@@ -10,12 +10,16 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "CEObservableMutableArray.h"
 
+/// A view model which contains a list of stock quotes
 @interface QuoteListViewModel : NSObject
 
+/// A list of stock quotes
 @property (nonatomic, strong) CEObservableMutableArray *quotes;
+
+/// A property that indicates whether price streaming is paused or not
 @property (nonatomic) BOOL paused;
 
-/// A command which when executed searches twitter using the current searchText
+/// A command which toggles the streaming state
 @property (nonatomic, strong) RACCommand *toggleStreamingCommand;
 
 @end

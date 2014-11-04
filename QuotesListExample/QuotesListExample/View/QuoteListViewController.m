@@ -33,14 +33,17 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   
+  // bind the pause command to the view
   self.pauseButton.rac_command = _viewModel.toggleStreamingCommand;
   
+  // update the button title based on the view mdoel
   RAC(self.pauseButton, title) =
     [RACObserve(_viewModel, paused)
       map:^id(NSNumber *x) {
         return [x boolValue] ? @"Resume" : @"Pause";
       }];
 
+  // bind the table view to the list of quotes
   UINib *nib = [UINib nibWithNibName:@"QuoteTableViewCell" bundle:nil];
   [CETableViewBindingHelper bindingHelperForTableView:self.quotesTableView
                                          sourceSignal:RACObserve(_viewModel, quotes)

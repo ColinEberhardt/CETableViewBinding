@@ -74,6 +74,10 @@
 
 -(void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject {
   [_backingStore replaceObjectAtIndex:index withObject:anObject];
+  
+  if ([self.delegate respondsToSelector:@selector(array:didReplaceObjectAtIndex:withObject:)]) {
+    [self.delegate array:self didReplaceObjectAtIndex:index withObject:anObject];
+  }
 }
 
 @end

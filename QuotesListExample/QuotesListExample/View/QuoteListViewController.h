@@ -10,6 +10,5 @@
 
 @interface QuoteListViewController : UIViewController
 
-
 @end
 
