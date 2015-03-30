@@ -14,8 +14,6 @@
 		3CCB782C1A01629200BEACF7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CCB782B1A01629200BEACF7 /* Images.xcassets */; };
 		3CCB782F1A01629200BEACF7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CCB782D1A01629200BEACF7 /* LaunchScreen.xib */; };
 		3CCB783B1A01629200BEACF7 /* QuotesListExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCB783A1A01629200BEACF7 /* QuotesListExampleTests.m */; };
-		3CCB784A1A02217F00BEACF7 /* CEObservableMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCB78461A02217F00BEACF7 /* CEObservableMutableArray.m */; };
-		3CCB784B1A02217F00BEACF7 /* CETableViewBindingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCB78491A02217F00BEACF7 /* CETableViewBindingHelper.m */; };
 		3CCB78531A02221900BEACF7 /* QuoteViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCB78521A02221900BEACF7 /* QuoteViewModel.m */; };
 		3CCB78561A02222200BEACF7 /* QuoteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCB78551A02222200BEACF7 /* QuoteListViewController.m */; };
 		3CCB78591A02225C00BEACF7 /* QuoteListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCB78581A02225C00BEACF7 /* QuoteListViewModel.m */; };
@@ -46,11 +44,6 @@
 		3CCB78341A01629200BEACF7 /* QuotesListExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuotesListExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CCB78391A01629200BEACF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3CCB783A1A01629200BEACF7 /* QuotesListExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuotesListExampleTests.m; sourceTree = "<group>"; };
-		3CCB78451A02217F00BEACF7 /* CEObservableMutableArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CEObservableMutableArray.h; path = ../../CEObservableMutableArray.h; sourceTree = "<group>"; };
-		3CCB78461A02217F00BEACF7 /* CEObservableMutableArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CEObservableMutableArray.m; path = ../../CEObservableMutableArray.m; sourceTree = "<group>"; };
-		3CCB78471A02217F00BEACF7 /* CEReactiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CEReactiveView.h; path = ../../CEReactiveView.h; sourceTree = "<group>"; };
-		3CCB78481A02217F00BEACF7 /* CETableViewBindingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CETableViewBindingHelper.h; path = ../../CETableViewBindingHelper.h; sourceTree = "<group>"; };
-		3CCB78491A02217F00BEACF7 /* CETableViewBindingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CETableViewBindingHelper.m; path = ../../CETableViewBindingHelper.m; sourceTree = "<group>"; };
 		3CCB78511A02221900BEACF7 /* QuoteViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuoteViewModel.h; path = ViewModel/QuoteViewModel.h; sourceTree = "<group>"; };
 		3CCB78521A02221900BEACF7 /* QuoteViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuoteViewModel.m; path = ViewModel/QuoteViewModel.m; sourceTree = "<group>"; };
 		3CCB78541A02222200BEACF7 /* QuoteListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuoteListViewController.h; path = View/QuoteListViewController.h; sourceTree = "<group>"; };
@@ -108,7 +101,6 @@
 			children = (
 				3CCB784D1A0221D500BEACF7 /* ViewModel */,
 				3CCB784C1A0221B800BEACF7 /* View */,
-				3CCB78441A02216500BEACF7 /* Util */,
 				3CCB78221A01629200BEACF7 /* AppDelegate.h */,
 				3CCB78231A01629200BEACF7 /* AppDelegate.m */,
 				3CCB78281A01629200BEACF7 /* Main.storyboard */,
@@ -143,18 +135,6 @@
 				3CCB78391A01629200BEACF7 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		3CCB78441A02216500BEACF7 /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				3CCB78451A02217F00BEACF7 /* CEObservableMutableArray.h */,
-				3CCB78461A02217F00BEACF7 /* CEObservableMutableArray.m */,
-				3CCB78471A02217F00BEACF7 /* CEReactiveView.h */,
-				3CCB78481A02217F00BEACF7 /* CETableViewBindingHelper.h */,
-				3CCB78491A02217F00BEACF7 /* CETableViewBindingHelper.m */,
-			);
-			name = Util;
 			sourceTree = "<group>";
 		};
 		3CCB784C1A0221B800BEACF7 /* View */ = {
@@ -337,10 +317,8 @@
 				3CCB78561A02222200BEACF7 /* QuoteListViewController.m in Sources */,
 				3CCB78591A02225C00BEACF7 /* QuoteListViewModel.m in Sources */,
 				3CCB78241A01629200BEACF7 /* AppDelegate.m in Sources */,
-				3CCB784B1A02217F00BEACF7 /* CETableViewBindingHelper.m in Sources */,
 				3CCB78211A01629200BEACF7 /* main.m in Sources */,
 				3CCB78531A02221900BEACF7 /* QuoteViewModel.m in Sources */,
-				3CCB784A1A02217F00BEACF7 /* CEObservableMutableArray.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,7 +394,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -451,7 +429,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -463,7 +441,9 @@
 			baseConfigurationReference = 0BD5A519F1F347E865623E0F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = QuotesListExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -474,7 +454,9 @@
 			baseConfigurationReference = 798D9C284FC5F0CE9F5B9921 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = QuotesListExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		03E7495390A14F16AAD5F87E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 159194CDA84D4A8384C079A8 /* libPods.a */; };
-		3CCB78101A01619D00BEACF7 /* CEObservableMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCB780B1A01619D00BEACF7 /* CEObservableMutableArray.m */; };
-		3CCB78111A01619D00BEACF7 /* CETableViewBindingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCB780F1A01619D00BEACF7 /* CETableViewBindingHelper.m */; };
 		72C53DB6190E30E800122BA2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C53DB5190E30E800122BA2 /* Foundation.framework */; };
 		72C53DB8190E30E800122BA2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C53DB7190E30E800122BA2 /* CoreGraphics.framework */; };
 		72C53DBA190E30E800122BA2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C53DB9190E30E800122BA2 /* UIKit.framework */; };
@@ -44,11 +42,6 @@
 
 /* Begin PBXFileReference section */
 		159194CDA84D4A8384C079A8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		3CCB780B1A01619D00BEACF7 /* CEObservableMutableArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CEObservableMutableArray.m; path = ../../../CEObservableMutableArray.m; sourceTree = "<group>"; };
-		3CCB780C1A01619D00BEACF7 /* CEObservableMutableArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CEObservableMutableArray.h; path = ../../../CEObservableMutableArray.h; sourceTree = "<group>"; };
-		3CCB780D1A01619D00BEACF7 /* CEReactiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CEReactiveView.h; path = ../../../CEReactiveView.h; sourceTree = "<group>"; };
-		3CCB780E1A01619D00BEACF7 /* CETableViewBindingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CETableViewBindingHelper.h; path = ../../../CETableViewBindingHelper.h; sourceTree = "<group>"; };
-		3CCB780F1A01619D00BEACF7 /* CETableViewBindingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CETableViewBindingHelper.m; path = ../../../CETableViewBindingHelper.m; sourceTree = "<group>"; };
 		72C53DB2190E30E800122BA2 /* CETableViewBinding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CETableViewBinding.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72C53DB5190E30E800122BA2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		72C53DB7190E30E800122BA2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -77,7 +70,8 @@
 		72C53DFF190EBEB700122BA2 /* CETweetTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CETweetTableViewCell.xib; path = View/CETweetTableViewCell.xib; sourceTree = "<group>"; };
 		72C53E01190EBEF100122BA2 /* CETweetTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CETweetTableViewCell.h; sourceTree = "<group>"; };
 		72C53E02190EBEF100122BA2 /* CETweetTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CETweetTableViewCell.m; sourceTree = "<group>"; };
-		F37BD20162F7480CAAC9359B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		8B2DF96A1E514DAAF93C3C13 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		B5706685253348DFE0DF28DC /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +101,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F280C3B3D4E1E4254B77BDA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8B2DF96A1E514DAAF93C3C13 /* Pods.debug.xcconfig */,
+				B5706685253348DFE0DF28DC /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		72C53DA9190E30E800122BA2 = {
 			isa = PBXGroup;
 			children = (
@@ -114,7 +117,7 @@
 				72C53DDA190E30E800122BA2 /* CETableViewBindingTests */,
 				72C53DB4190E30E800122BA2 /* Frameworks */,
 				72C53DB3190E30E800122BA2 /* Products */,
-				F37BD20162F7480CAAC9359B /* Pods.xcconfig */,
+				2F280C3B3D4E1E4254B77BDA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,7 +147,6 @@
 		72C53DBB190E30E800122BA2 /* CETableViewBinding */ = {
 			isa = PBXGroup;
 			children = (
-				72C53DEF190E31DB00122BA2 /* Util */,
 				72C53DEB190E318E00122BA2 /* View */,
 				72C53DEA190E318700122BA2 /* ViewModel */,
 				72C53DC4190E30E800122BA2 /* CEAppDelegate.h */,
@@ -206,18 +208,6 @@
 				72C53E02190EBEF100122BA2 /* CETweetTableViewCell.m */,
 			);
 			name = View;
-			sourceTree = "<group>";
-		};
-		72C53DEF190E31DB00122BA2 /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				3CCB780B1A01619D00BEACF7 /* CEObservableMutableArray.m */,
-				3CCB780C1A01619D00BEACF7 /* CEObservableMutableArray.h */,
-				3CCB780D1A01619D00BEACF7 /* CEReactiveView.h */,
-				3CCB780E1A01619D00BEACF7 /* CETableViewBindingHelper.h */,
-				3CCB780F1A01619D00BEACF7 /* CETableViewBindingHelper.m */,
-			);
-			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,7 +334,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -357,10 +347,8 @@
 				72C53E03190EBEF100122BA2 /* CETweetTableViewCell.m in Sources */,
 				72C53DF7190E32A500122BA2 /* CETwitterSearchViewModel.m in Sources */,
 				72C53DC6190E30E800122BA2 /* CEAppDelegate.m in Sources */,
-				3CCB78111A01619D00BEACF7 /* CETableViewBindingHelper.m in Sources */,
 				72C53DC2190E30E800122BA2 /* main.m in Sources */,
 				72C53DFE190EBB0D00122BA2 /* CETweetViewModel.m in Sources */,
-				3CCB78101A01619D00BEACF7 /* CEObservableMutableArray.m in Sources */,
 				72C53DEE190E31D100122BA2 /* CETwitterSearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,7 +473,7 @@
 		};
 		72C53DE5190E30E800122BA2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F37BD20162F7480CAAC9359B /* Pods.xcconfig */;
+			baseConfigurationReference = 8B2DF96A1E514DAAF93C3C13 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -499,7 +487,7 @@
 		};
 		72C53DE6190E30E800122BA2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F37BD20162F7480CAAC9359B /* Pods.xcconfig */;
+			baseConfigurationReference = B5706685253348DFE0DF28DC /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
