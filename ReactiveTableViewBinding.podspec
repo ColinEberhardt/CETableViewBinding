@@ -1,5 +1,5 @@
 Pod::Spec.new do |spec|
-  spec.name         = 'ReactiveTableViewBiding'
+  spec.name         = 'ReactiveTableViewBinding'
   spec.version      = '1.0'
   spec.license      = { :type => 'BSD' }
   spec.homepage     = 'https://github.com/ColinEberhardt/CETableViewBinding'
