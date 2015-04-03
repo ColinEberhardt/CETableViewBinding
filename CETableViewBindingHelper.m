@@ -333,7 +333,7 @@ accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
   [_selection execute:_data[indexPath.row]];
   
   // forward the delegate method
-  if (_delegateRespondsTo.didDeselectRowAtIndexPath == 1) {
+  if (_delegateRespondsTo.didSelectRowAtIndexPath == 1) {
     [self.delegate tableView:tableView didSelectRowAtIndexPath:indexPath];
   }
 }
