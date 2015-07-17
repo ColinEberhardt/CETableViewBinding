@@ -18,7 +18,8 @@
 - (instancetype)initWithTableView:(UITableView *)tableView
                      sourceSignal:(RACSignal *)source
                  selectionCommand:(RACCommand *)selection
-                templateCellClass:(Class)templateCellClass;
+                templateCellClass:(Class)templateCellClass
+                  reuseIdentifier:(NSString *)identifier;
 
 - (instancetype) initWithTableView:(UITableView *)tableView
                       sourceSignal:(RACSignal *)source
@@ -33,6 +34,8 @@
 + (instancetype) bindingHelperForTableView:(UITableView *)tableView
                               sourceSignal:(RACSignal *)source
                           selectionCommand:(RACCommand *)selection
-                         templateCellClass:(Class)templateCellClass;
+                         templateCellClass:(Class)templateCellClass
+                           reuseIdentifier:(NSString *)identifier;
+
 
 @end

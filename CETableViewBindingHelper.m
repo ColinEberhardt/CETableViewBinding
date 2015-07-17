@@ -103,7 +103,8 @@ uint scrollViewDidEndScrollingAnimation:1;
 - (instancetype)initWithTableView:(UITableView *)tableView
                      sourceSignal:(RACSignal *)source
                  selectionCommand:(RACCommand *)selection
-                     templateCellClass:(Class)templateCellClass {
+                     templateCellClass:(Class)templateCellClass
+                  reuseIdentifier:(NSString *)identifier {
     if (self = [super init]) {
         _tableView = tableView;
         _data = [NSArray array];
@@ -124,7 +125,7 @@ uint scrollViewDidEndScrollingAnimation:1;
 
         // create an instance of the template cell and register with the table view
         _templateCell = [[templateCellClass alloc] init];
-        [tableView registerClass:templateCellClass forCellReuseIdentifier:_templateCell.reuseIdentifier];
+        [tableView registerClass:templateCellClass forCellReuseIdentifier:identifier];
 
         _tableView.dataSource = self;
         _tableView.delegate = self;
@@ -183,11 +184,13 @@ uint scrollViewDidEndScrollingAnimation:1;
 
 + (instancetype) bindingHelperForTableView:(UITableView *)tableView
                               sourceSignal:(RACSignal *)source
-                          selectionCommand:(RACCommand *)selection templateCellClass:(__unsafe_unretained Class)templateCellClass {
+                          selectionCommand:(RACCommand *)selection templateCellClass:(__unsafe_unretained Class)templateCellClass
+                           reuseIdentifier:(NSString *)identifier {
     return [[CETableViewBindingHelper alloc] initWithTableView:tableView
                                                   sourceSignal:source
                                               selectionCommand:selection
-                                             templateCellClass:templateCellClass];
+                                             templateCellClass:templateCellClass
+                                               reuseIdentifier:identifier];
 }
 
 #pragma mark - Setters
