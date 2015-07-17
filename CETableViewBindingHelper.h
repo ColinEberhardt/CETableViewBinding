@@ -15,6 +15,11 @@
 // forwards the UITableViewDelegate methods
 @property (weak, nonatomic) id<UITableViewDelegate> delegate;
 
+- (instancetype)initWithTableView:(UITableView *)tableView
+                     sourceSignal:(RACSignal *)source
+                 selectionCommand:(RACCommand *)selection
+                templateCellClass:(Class)templateCellClass;
+
 - (instancetype) initWithTableView:(UITableView *)tableView
                       sourceSignal:(RACSignal *)source
                   selectionCommand:(RACCommand *)selection
@@ -24,5 +29,10 @@
                               sourceSignal:(RACSignal *)source
                           selectionCommand:(RACCommand *)selection
                               templateCell:(UINib *)templateCellNib;
+
++ (instancetype) bindingHelperForTableView:(UITableView *)tableView
+                              sourceSignal:(RACSignal *)source
+                          selectionCommand:(RACCommand *)selection
+                         templateCellClass:(Class)templateCellClass;
 
 @end

@@ -103,6 +103,39 @@ uint scrollViewDidEndScrollingAnimation:1;
 - (instancetype)initWithTableView:(UITableView *)tableView
                      sourceSignal:(RACSignal *)source
                  selectionCommand:(RACCommand *)selection
+                     templateCellClass:(Class)templateCellClass {
+    if (self = [super init]) {
+        _tableView = tableView;
+        _data = [NSArray array];
+        _selection = selection;
+
+        // each time the view model updates the array property, store the latest
+        // value and reload the table view
+        [source subscribeNext:^(id x) {
+            if ([x isKindOfClass:[CEObservableMutableArray class]]) {
+                ((CEObservableMutableArray *)x).delegate = self;
+            }
+            if (self->_data != nil && [self->_data isKindOfClass:[CEObservableMutableArray class]]) {
+                ((CEObservableMutableArray *)self->_data).delegate = nil;
+            }
+            self->_data = x;
+            [self->_tableView reloadData];
+        }];
+
+        // create an instance of the template cell and register with the table view
+        _templateCell = [[templateCellClass alloc] init];
+        [tableView registerClass:templateCellClass forCellReuseIdentifier:_templateCell.reuseIdentifier];
+
+        _tableView.dataSource = self;
+        _tableView.delegate = self;
+        self.delegate = nil;
+    }
+    return self;
+}
+
+- (instancetype)initWithTableView:(UITableView *)tableView
+                     sourceSignal:(RACSignal *)source
+                 selectionCommand:(RACCommand *)selection
                      templateCell:(UINib *)templateCellNib {
   
   if (self = [super init]) {
@@ -146,6 +179,15 @@ uint scrollViewDidEndScrollingAnimation:1;
                                                 sourceSignal:source
                                             selectionCommand:selection
                                                 templateCell:templateCellNib];
+}
+
++ (instancetype) bindingHelperForTableView:(UITableView *)tableView
+                              sourceSignal:(RACSignal *)source
+                          selectionCommand:(RACCommand *)selection templateCellClass:(__unsafe_unretained Class)templateCellClass {
+    return [[CETableViewBindingHelper alloc] initWithTableView:tableView
+                                                  sourceSignal:source
+                                              selectionCommand:selection
+                                             templateCellClass:templateCellClass];
 }
 
 #pragma mark - Setters
