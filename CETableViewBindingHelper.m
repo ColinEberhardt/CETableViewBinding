@@ -13,6 +13,8 @@
 
 @interface CETableViewBindingHelper () <UITableViewDataSource, UITableViewDelegate, CEObservableMutableArrayDelegate>
 
+@property (nonatomic, strong, readwrite) NSString *reuseIdentifier;
+
 @property (nonatomic, readwrite, assign) struct delegateMethodsCaching {
 
 // UITableViewDelegate
@@ -126,6 +128,7 @@ uint scrollViewDidEndScrollingAnimation:1;
         // create an instance of the template cell and register with the table view
         _templateCell = [[templateCellClass alloc] init];
         [tableView registerClass:templateCellClass forCellReuseIdentifier:identifier];
+        self.reuseIdentifier = identifier;
 
         _tableView.dataSource = self;
         _tableView.delegate = self;
@@ -160,7 +163,8 @@ uint scrollViewDidEndScrollingAnimation:1;
     // create an instance of the template cell and register with the table view
     _templateCell = [[templateCellNib instantiateWithOwner:nil options:nil] firstObject];
     [_tableView registerNib:templateCellNib forCellReuseIdentifier:_templateCell.reuseIdentifier];
-    
+    self.reuseIdentifier = _templateCell.reuseIdentifier;
+
     // use the template cell to set the row height
     _tableView.rowHeight = _templateCell.bounds.size.height;
     
@@ -283,7 +287,7 @@ uint scrollViewDidEndScrollingAnimation:1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  id<CEReactiveView> cell = [tableView dequeueReusableCellWithIdentifier:_templateCell.reuseIdentifier];
+  id<CEReactiveView> cell = [tableView dequeueReusableCellWithIdentifier:self.reuseIdentifier];
 
   NSAssert([cell respondsToSelector:@selector(bindViewModel:)], @"The cells supplied to the CETableViewBindingHelper must implement the CEReactiveView protocol");
   [cell bindViewModel:_data[indexPath.row]];
