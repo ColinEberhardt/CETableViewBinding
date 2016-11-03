@@ -10,7 +10,7 @@
 #import "CETweetViewModel.h"
 #import "RACEXTScope.h"
 #import <LinqToObjectiveC/NSArray+LinqExtensions.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <ReactiveObjC/ReactiveObjC.h>
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
 

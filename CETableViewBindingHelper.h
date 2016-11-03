@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <ReactiveObjC/ReactiveObjC.h>
 
 /// A helper class for binding view models with NSArray properties to a UITableView.
 @interface CETableViewBindingHelper : NSObject

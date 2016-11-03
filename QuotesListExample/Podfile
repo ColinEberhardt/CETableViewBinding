@@ -1,2 +1,3 @@
-platform :ios, '7.0'
-pod 'ReactiveTableViewBinding', :path => '../'
+platform :ios, '8.0'
+
+pod 'ReactiveTableViewBinding', path: '../'

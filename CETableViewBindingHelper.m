@@ -8,7 +8,7 @@
 
 #import "CETableViewBindingHelper.h"
 #import "CEReactiveView.h"
-#import <ReactiveCocoa/RACEXTScope.h>
+#import <ReactiveObjC/RACEXTScope.h>
 #import "CEObservableMutableArray.h"
 
 @interface CETableViewBindingHelper () <UITableViewDataSource, UITableViewDelegate, CEObservableMutableArrayDelegate>
