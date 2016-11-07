@@ -109,7 +109,7 @@ uint scrollViewDidEndScrollingAnimation:1;
                   reuseIdentifier:(NSString *)identifier {
     if (self = [super init]) {
         _tableView = tableView;
-        _data = [NSArray array];
+        _data = @[];
         _selection = selection;
 
         // each time the view model updates the array property, store the latest
@@ -144,7 +144,7 @@ uint scrollViewDidEndScrollingAnimation:1;
   
   if (self = [super init]) {
     _tableView = tableView;
-    _data = [NSArray array];
+    _data = @[];
     _selection = selection;
     
     // each time the view model updates the array property, store the latest
@@ -161,7 +161,7 @@ uint scrollViewDidEndScrollingAnimation:1;
     }];
     
     // create an instance of the template cell and register with the table view
-    _templateCell = [[templateCellNib instantiateWithOwner:nil options:nil] firstObject];
+    _templateCell = [templateCellNib instantiateWithOwner:nil options:nil].firstObject;
     [_tableView registerNib:templateCellNib forCellReuseIdentifier:_templateCell.reuseIdentifier];
     self.reuseIdentifier = _templateCell.reuseIdentifier;
 

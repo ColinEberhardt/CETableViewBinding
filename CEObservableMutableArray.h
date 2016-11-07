@@ -28,9 +28,9 @@
 @end
 
 /// a mutable array that informs the delegate of mutations
-@interface CEObservableMutableArray : NSMutableArray
+@interface CEObservableMutableArray <ObjectType> : NSMutableArray <ObjectType>
 
-- (instancetype) initWithArray:(NSArray *)array;
+- (instancetype) initWithArray:(NSArray *)array NS_DESIGNATED_INITIALIZER;
 
 @property (nonatomic, assign) id<CEObservableMutableArrayDelegate> delegate;
 

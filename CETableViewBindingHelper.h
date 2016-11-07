@@ -19,12 +19,12 @@
                      sourceSignal:(RACSignal *)source
                  selectionCommand:(RACCommand *)selection
                 templateCellClass:(Class)templateCellClass
-                  reuseIdentifier:(NSString *)identifier;
+                  reuseIdentifier:(NSString *)identifier NS_DESIGNATED_INITIALIZER;
 
 - (instancetype) initWithTableView:(UITableView *)tableView
                       sourceSignal:(RACSignal *)source
                   selectionCommand:(RACCommand *)selection
-                      templateCell:(UINib *)templateCellNib;
+                      templateCell:(UINib *)templateCellNib NS_DESIGNATED_INITIALIZER;
 
 + (instancetype) bindingHelperForTableView:(UITableView *)tableView
                               sourceSignal:(RACSignal *)source
