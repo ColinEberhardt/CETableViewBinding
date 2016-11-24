@@ -19,7 +19,7 @@
   return self;
 }
 
-- (id) init {
+- (instancetype) init {
   if (self  = [super init]) {
     _backingStore = [NSMutableArray new];
   }
@@ -29,11 +29,11 @@
 #pragma mark NSArray
 
 -(NSUInteger)count {
-  return [_backingStore count];
+  return _backingStore.count;
 }
 
 -(id)objectAtIndex:(NSUInteger)index {
-  return [_backingStore objectAtIndex:index];
+  return _backingStore[index];
 }
 
 #pragma mark NSMutableArray
@@ -73,7 +73,7 @@
 }
 
 -(void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject {
-  [_backingStore replaceObjectAtIndex:index withObject:anObject];
+  _backingStore[index] = anObject;
   
   if ([self.delegate respondsToSelector:@selector(array:didReplaceObjectAtIndex:withObject:)]) {
     [self.delegate array:self didReplaceObjectAtIndex:index withObject:anObject];

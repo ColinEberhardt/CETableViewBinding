@@ -8,10 +8,12 @@
 
 #import "CETableViewBindingHelper.h"
 #import "CEReactiveView.h"
-#import <ReactiveCocoa/RACEXTScope.h>
+#import <ReactiveObjC/RACEXTScope.h>
 #import "CEObservableMutableArray.h"
 
 @interface CETableViewBindingHelper () <UITableViewDataSource, UITableViewDelegate, CEObservableMutableArrayDelegate>
+
+@property (nonatomic, strong, readwrite) NSString *reuseIdentifier;
 
 @property (nonatomic, readwrite, assign) struct delegateMethodsCaching {
 
@@ -103,11 +105,46 @@ uint scrollViewDidEndScrollingAnimation:1;
 - (instancetype)initWithTableView:(UITableView *)tableView
                      sourceSignal:(RACSignal *)source
                  selectionCommand:(RACCommand *)selection
+                     templateCellClass:(Class)templateCellClass
+                  reuseIdentifier:(NSString *)identifier {
+    if (self = [super init]) {
+        _tableView = tableView;
+        _data = @[];
+        _selection = selection;
+
+        // each time the view model updates the array property, store the latest
+        // value and reload the table view
+        [source subscribeNext:^(id x) {
+            if ([x isKindOfClass:[CEObservableMutableArray class]]) {
+                ((CEObservableMutableArray *)x).delegate = self;
+            }
+            if (self->_data != nil && [self->_data isKindOfClass:[CEObservableMutableArray class]]) {
+                ((CEObservableMutableArray *)self->_data).delegate = nil;
+            }
+            self->_data = x;
+            [self->_tableView reloadData];
+        }];
+
+        // create an instance of the template cell and register with the table view
+        _templateCell = [[templateCellClass alloc] init];
+        [tableView registerClass:templateCellClass forCellReuseIdentifier:identifier];
+        self.reuseIdentifier = identifier;
+
+        _tableView.dataSource = self;
+        _tableView.delegate = self;
+        self.delegate = nil;
+    }
+    return self;
+}
+
+- (instancetype)initWithTableView:(UITableView *)tableView
+                     sourceSignal:(RACSignal *)source
+                 selectionCommand:(RACCommand *)selection
                      templateCell:(UINib *)templateCellNib {
   
   if (self = [super init]) {
     _tableView = tableView;
-    _data = [NSArray array];
+    _data = @[];
     _selection = selection;
     
     // each time the view model updates the array property, store the latest
@@ -124,9 +161,10 @@ uint scrollViewDidEndScrollingAnimation:1;
     }];
     
     // create an instance of the template cell and register with the table view
-    _templateCell = [[templateCellNib instantiateWithOwner:nil options:nil] firstObject];
+    _templateCell = [templateCellNib instantiateWithOwner:nil options:nil].firstObject;
     [_tableView registerNib:templateCellNib forCellReuseIdentifier:_templateCell.reuseIdentifier];
-    
+    self.reuseIdentifier = _templateCell.reuseIdentifier;
+
     // use the template cell to set the row height
     _tableView.rowHeight = _templateCell.bounds.size.height;
     
@@ -146,6 +184,17 @@ uint scrollViewDidEndScrollingAnimation:1;
                                                 sourceSignal:source
                                             selectionCommand:selection
                                                 templateCell:templateCellNib];
+}
+
++ (instancetype) bindingHelperForTableView:(UITableView *)tableView
+                              sourceSignal:(RACSignal *)source
+                          selectionCommand:(RACCommand *)selection templateCellClass:(__unsafe_unretained Class)templateCellClass
+                           reuseIdentifier:(NSString *)identifier {
+    return [[CETableViewBindingHelper alloc] initWithTableView:tableView
+                                                  sourceSignal:source
+                                              selectionCommand:selection
+                                             templateCellClass:templateCellClass
+                                               reuseIdentifier:identifier];
 }
 
 #pragma mark - Setters
@@ -238,7 +287,8 @@ uint scrollViewDidEndScrollingAnimation:1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  id<CEReactiveView> cell = [tableView dequeueReusableCellWithIdentifier:_templateCell.reuseIdentifier];
+  id<CEReactiveView> cell = [tableView dequeueReusableCellWithIdentifier:self.reuseIdentifier
+                                                            forIndexPath:indexPath];
 
   NSAssert([cell respondsToSelector:@selector(bindViewModel:)], @"The cells supplied to the CETableViewBindingHelper must implement the CEReactiveView protocol");
   [cell bindViewModel:_data[indexPath.row]];
@@ -670,15 +720,15 @@ didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
 #pragma mark - CEObservableMutableArrayDelegate methods
 
 - (void)array:(CEObservableMutableArray *)array didAddItemAtIndex:(NSUInteger)index {
-  [_tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationRight];
+  [_tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (void)array:(CEObservableMutableArray *)array didRemoveItemAtIndex:(NSUInteger)index {
-  [_tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationLeft];
+  [_tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (void)array:(CEObservableMutableArray *)array didReplaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject {
-  [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationMiddle];
+  [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 @end

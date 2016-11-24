@@ -8,7 +8,7 @@
 
 #import "QuoteTableViewCell.h"
 #import "QuoteViewModel.h"
-#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <ReactiveObjC/ReactiveObjC.h>
 
 @interface QuoteTableViewCell()
 

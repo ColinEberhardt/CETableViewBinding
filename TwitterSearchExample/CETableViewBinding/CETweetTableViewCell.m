@@ -8,7 +8,7 @@
 
 #import "CETweetTableViewCell.h"
 #import "CETweetViewModel.h"
-#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <ReactiveObjC/ReactiveObjC.h>
 
 @interface CETweetTableViewCell()
 

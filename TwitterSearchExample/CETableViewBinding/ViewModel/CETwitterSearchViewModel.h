@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <ReactiveObjC/ReactiveObjC.h>
 
 /// A view model which provides a mechanism for searching twitter
 @interface CETwitterSearchViewModel : NSObject

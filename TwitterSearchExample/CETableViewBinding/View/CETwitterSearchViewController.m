@@ -9,7 +9,7 @@
 #import "CETwitterSearchViewController.h"
 #import "CETwitterSearchViewModel.h"
 #import "CETableViewBindingHelper.h"
-#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <ReactiveObjC/ReactiveObjC.h>
 
 @interface CETwitterSearchViewController ()
 
