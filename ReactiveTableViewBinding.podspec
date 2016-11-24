@@ -16,6 +16,6 @@ Pod::Spec.new do |spec|
   spec.platform     = :ios, '8.0'
   spec.requires_arc = true
   spec.source_files = '*.{h,m}'
-  spec.dependency 'ReactiveObjC', '~> 1.0'
+  spec.dependency 'ReactiveObjC', '~> 2.1'
 
 end
