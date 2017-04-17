@@ -1,4 +1,4 @@
-##ReactiveCocoa TableView Binding Helper
+## ReactiveCocoa TableView Binding Helper
 
 This project contains a simple helper class that can be used to bind array properties on ReactiveCocoa view models to table views. Here's a quick example of how to use it:
 
